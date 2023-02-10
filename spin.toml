@@ -1,0 +1,16 @@
+spin_version = "1"
+authors = ["Stas Kelvich <stas.kelvich@gmail.com>"]
+description = ""
+name = "spin-rust"
+trigger = { type = "http", base = "/" }
+version = "0.1.0"
+
+[[component]]
+id = "spin-rust"
+source = "target/wasm32-wasi/release/spin_rust.wasm"
+allowed_http_hosts = []
+environment = {DATABASE_URL="postgres://stas:<password>@ep-odd-frost-345255.eu-central-1.aws.neon.tech/neondb"}
+[component.trigger]
+route = "/..."
+[component.build]
+command = "cargo build --target wasm32-wasi --release"
